@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1068873260509",
+    "project_id": "plmbr-project",
+    "storage_bucket": "plmbr-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068873260509:android:6cbdf52d245116b9702a34",
+        "android_client_info": {
+          "package_name": "nl.plmbr.plmbr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068873260509-g82l1djjqg8d7ngv8deaj228a9sqh1vc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nl.plmbr.plmbr",
+            "certificate_hash": "e4bd29f787f1f5c673941694decf231b7a13c423"
+          }
+        },
+        {
+          "client_id": "1068873260509-p9smc9qbdoecle9ctg2tf3qm8939nbnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHQry3bsszhqsVBhT0jvp-PqtbiRdqc4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068873260509-p9smc9qbdoecle9ctg2tf3qm8939nbnd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
