@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plmbr/services/auth.dart';
@@ -20,7 +21,7 @@ class LoginScreen extends StatelessWidget {
             Flexible(
               child: LoginButton(
                 icon: FontAwesomeIcons.userNinja,
-                text: 'Continue as Guest',
+                text: tr("login-as-guest"),
                 loginMethod: AuthService().anonLogin,
                 color: Colors.deepPurple,
               ),

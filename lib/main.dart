@@ -1,13 +1,20 @@
 import 'package:plmbr/routes.dart';
 import 'package:plmbr/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 // Import the firebase_core plugin
 import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(App());
+
+  await EasyLocalization.ensureInitialized();
+  runApp(EasyLocalization(
+      supportedLocales: [Locale('en'), Locale('nl')],
+      fallbackLocale: Locale('en'),
+      path: 'assets/translations',
+      child: App()));
 }
 
 /// We are using a StatefulWidget such that we only create the [Future] once,
@@ -34,7 +41,7 @@ class _AppState extends State<App> {
       builder: (context, snapshot) {
         // Check for errors
         if (snapshot.hasError) {
-          return const Text("Error", textDirection: TextDirection.ltr);
+          return Text("Error");
         }
 
         // Once complete, show your application
@@ -42,14 +49,13 @@ class _AppState extends State<App> {
           return MaterialApp(
             routes: appRoutes,
             theme: appTheme,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
           );
         }
 
-        // Otherwise, show something whilst waiting for initialization to complete
-        return const Text(
-          "Waiting",
-          textDirection: TextDirection.ltr,
-        );
+        return Scaffold();
       },
     );
   }
