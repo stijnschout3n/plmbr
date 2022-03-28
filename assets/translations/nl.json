@@ -1,3 +1,36 @@
 {
-    "login-as-guest": "Ga verder als gast"
+    "login-as-guest": "Ga verder als gast",
+    "login-with-google": "Login met Google",
+    "login-test-user": "Test user",
+
+    "CRM": "Klanten",
+    "add": "Voeg toe",
+    "search-customer": "Zoek klant",
+    "no-customers-found": "Geen klanten gevonden in klantenbestand",
+    "please-fill-in-first-name": "Vul s.v.p. een voornaam in",
+    "enter-first-name": "Vul voornaam in",
+    "first-name": "Voornaam",
+    "please-fill-in-last-name": "Vul s.v.p. een achternaam in",
+    "enter-last-name": "Vul achternaam in",
+    "last-name": "Achternaam",
+    "please-fill-in-email": "Vul een geldig emailadres in",
+    "enter-email": "Vul in emailadres",
+    "please-fill-in-phone": "Vul s.v.p. het telefoonnummer in",
+    "enter-phone": "Vul telefoonnummer in",
+    "phone": "Telefoonnummer",
+    "please-fill-in-street": "Vul s.v.p. een straatnaam in",
+    "enter-street": "Vul straatnaam in",
+    "street": "Straatnaam",
+    "please-fill-in-house-number": "Vul s.v.p. een huisnummer in",
+    "enter-house-number": "Vul huisnummer in",
+    "house-number": "Huisnummer",
+    "please-fill-in-zipcode": "Vul s.v.p. een postcode in",
+    "enter-zipcode": "Vul postcode in",
+    "zipcode": "Postcode",
+    "please-fill-in-town": "Vul s.v.p. een woonplaats in",
+    "enter-town": "Vul woonplaats in",
+    "town": "Woonplaats",
+
+    "register": "Registeren",
+    "registration-sent": "Registratie verzonden"
 }

@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plmbr/services/services.dart';
@@ -59,7 +60,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please fill in a first name';
+                        return tr("please-fill-in-first-name");
                       }
                       return null;
                     },
@@ -67,8 +68,8 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                       _nextFocus(_lastnameFocusNode);
                     },
                     decoration: InputDecoration(
-                      hintText: 'Enter first name',
-                      labelText: 'First Name',
+                      hintText: tr("enter-first-name"),
+                      labelText: tr("first-name"),
                     ),
                   ),
                   //lastname
@@ -79,7 +80,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please fill in a last name';
+                        return tr("please-fill-in-last-name");
                       }
                       return null;
                     },
@@ -87,8 +88,8 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                       _nextFocus(_emailFocusNode);
                     },
                     decoration: InputDecoration(
-                      hintText: 'Enter last name',
-                      labelText: 'Last Name',
+                      hintText: tr("enter-last-name"),
+                      labelText: tr("last-name"),
                     ),
                   ),
                   //email
@@ -103,13 +104,13 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                           .hasMatch(value.toString())) {
                         return null;
                       }
-                      return 'Please fill in a valid email';
+                      return tr("please-fill-in-email");
                     },
                     onFieldSubmitted: (String value) {
                       _nextFocus(_phoneFocusNode);
                     },
                     decoration: InputDecoration(
-                      hintText: 'Enter email',
+                      hintText: tr("enter-email"),
                       labelText: 'Email',
                     ),
                   ),
@@ -121,7 +122,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please fill in a phone number';
+                        return tr("please-fill-in-phone");
                       }
                       return null;
                     },
@@ -129,8 +130,8 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                       _nextFocus(_streetFocusNode);
                     },
                     decoration: InputDecoration(
-                      hintText: 'Enter phone number',
-                      labelText: 'Phone',
+                      hintText: tr("enter-phone"),
+                      labelText: tr("phone"),
                     ),
                   ),
                   //street
@@ -141,7 +142,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please fill in a street name';
+                        return tr("please-fill-in-street");
                       }
                       return null;
                     },
@@ -149,8 +150,8 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                       _nextFocus(_housenumberFocusNode);
                     },
                     decoration: InputDecoration(
-                      hintText: 'Enter street',
-                      labelText: 'Street',
+                      hintText: tr("enter-street"),
+                      labelText: tr("street"),
                     ),
                   ),
                   //housenumber
@@ -161,7 +162,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please fill in a house number';
+                        return tr("please-fill-in-house-number");
                       }
                       return null;
                     },
@@ -169,8 +170,8 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                       _nextFocus(_zipcodeFocusNode);
                     },
                     decoration: InputDecoration(
-                      hintText: 'Enter house number',
-                      labelText: 'House Number',
+                      hintText: tr("enter-house-number"),
+                      labelText: tr("house-number"),
                     ),
                   ),
                   //zipcode
@@ -181,7 +182,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please fill in a zipcode';
+                        return tr("please-fill-in-zipcode");
                       }
                       return null;
                     },
@@ -189,8 +190,8 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                       _nextFocus(_townFocusNode);
                     },
                     decoration: InputDecoration(
-                      hintText: 'Enter zipcode',
-                      labelText: 'Zipcode',
+                      hintText: tr("enter-zipcode"),
+                      labelText: tr("zipcode"),
                     ),
                   ),
                   //town
@@ -201,13 +202,13 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                     textInputAction: TextInputAction.done,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please fill in a town or city';
+                        return tr("please-fill-in-town");
                       }
                       return null;
                     },
                     decoration: InputDecoration(
-                      hintText: 'Enter a town or city',
-                      labelText: 'City or Town',
+                      hintText: tr("enter-town"),
+                      labelText: tr("town"),
                     ),
                   ),
 
@@ -220,7 +221,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                           ),
                           child: ElevatedButton(
                             onPressed: () => _submitForm(),
-                            child: Text('Register'),
+                            child: Text(tr("register")),
                           ),
                         ),
                       ),
@@ -253,7 +254,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
       FirestoreService().addCustomer(c);
 
       // If the form passes validation, display a Snackbar.
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Registration sent')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(tr("registration-sent"))));
       Navigator.pop(context);
     }
   }

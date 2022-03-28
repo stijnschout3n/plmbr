@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:plmbr/shared/shared.dart';
 
@@ -31,10 +32,10 @@ class AppsScreen extends StatelessWidget {
                           fit: BoxFit.contain,
                         ),
                       )),
-                      const Flexible(
+                      Flexible(
                           child: Padding(
                         padding: EdgeInsets.only(left: 20, right: 20),
-                        child: Text("CRM"),
+                        child: Text(tr("CRM")),
                       ))
                     ],
                   ),

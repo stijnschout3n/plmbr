@@ -1,4 +1,36 @@
 {
-    "login-as-guest": "Continue as Guest"
+    "login-as-guest": "Continue as Guest",
+    "login-with-google": "Login with Google",
+    "login-test-user": "Test user",
 
+    "CRM": "CRM",
+    "add": "Add",
+    "search-customer": "Search customer",
+    "no-customers-found": "No customers found in customer database",
+    "please-fill-in-first-name": "Please fill in a first name",
+    "enter-first-name": "Enter first name",
+    "first-name": "First name",
+    "please-fill-in-last-name": "Please fill in a last name",
+    "enter-last-name": "Enter last name",
+    "last-name": "Last name",
+    "please-fill-in-email": "Please fill in a valid email",
+    "enter-email": "Enter email",
+    "please-fill-in-phone": "Please fill in a phone number",
+    "enter-phone": "Enter phone number",
+    "phone": "Phone number",
+    "please-fill-in-street": "Please fill in a street name",
+    "enter-street": "Enter street name",
+    "street": "Street name",
+    "please-fill-in-housenumber": "Please enter a house number",
+    "enter-housenumber": "Enter house number",
+    "house-number": "House number",
+    "please-fill-in-zipcode": "Please fill in a zipcode",
+    "enter-zipcode": "Enter zipcode",
+    "zipcode": "Zipcode",
+    "please-fill-in-town": "Please fill in a city or town",
+    "enter-town": "Enter city or town",
+    "town": "City or Town",
+
+    "register": "Register",
+    "registration-sent": "Registration sent"
 }

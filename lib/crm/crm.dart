@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:plmbr/crm/AddCustomer.dart';
 import 'package:plmbr/crm/ViewCustomer.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _CrmScreenState extends State<CrmScreen> {
             var customers = snapshot.data!;
             return Scaffold(
               appBar: AppBar(
-                title: const Text("CRM"),
+                title: Text(tr("CRM")),
                 actions: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(right: 20.0),
@@ -37,7 +38,7 @@ class _CrmScreenState extends State<CrmScreen> {
                         onTap: () =>
                             Navigator.push(context, MaterialPageRoute(builder: (context) => AddCustomerScreen()))
                                 .then((value) => setState(() {})),
-                        child: Row(children: <Widget>[Text('Add'), Icon(Icons.contacts)])),
+                        child: Row(children: <Widget>[Text(tr("add")), Icon(Icons.contacts)])),
                   )
                 ],
               ),
@@ -56,7 +57,7 @@ class _CrmScreenState extends State<CrmScreen> {
                         .toList(),
                     emptyWidget: EmptyView(),
                     inputDecoration: InputDecoration(
-                        labelText: "Search Customer",
+                        labelText: tr("search-customer"),
                         fillColor: Colors.white,
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
@@ -69,7 +70,7 @@ class _CrmScreenState extends State<CrmScreen> {
               ),
             );
           } else {
-            return const Text('No Customers found in Firestore. Check database');
+            return Text(tr("no-customers-found"));
           }
         });
   }
@@ -121,7 +122,7 @@ class CustomerItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Address: ${customer.street} ${customer.housenumber}, ${customer.town}',
+                    '${customer.street} ${customer.housenumber}, ${customer.town}',
                     style: const TextStyle(
                       color: Colors.black,
                     ),
@@ -143,12 +144,12 @@ class EmptyView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Icon(
+      children: [
+        const Icon(
           Icons.error,
           color: Colors.red,
         ),
-        Text('no customers found'),
+        Text(tr("no-customers-found")),
       ],
     );
   }
