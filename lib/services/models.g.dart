@@ -6,6 +6,26 @@ part of 'models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+CalendarDateObject _$CalendarDateObjectFromJson(Map<String, dynamic> json) =>
+    CalendarDateObject(
+      fullDay: json['fullDay'] as bool? ?? false,
+      startTimeStamp: json['startTimeStamp'] as String? ?? "",
+      endTimeStamp: json['endTimeStamp'] as String? ?? "",
+      uid: json['uid'] as String? ?? "",
+      customer: json['customer'] as String? ?? "",
+      fid: json['fid'] as String? ?? "",
+    );
+
+Map<String, dynamic> _$CalendarDateObjectToJson(CalendarDateObject instance) =>
+    <String, dynamic>{
+      'fullDay': instance.fullDay,
+      'startTimeStamp': instance.startTimeStamp,
+      'endTimeStamp': instance.endTimeStamp,
+      'uid': instance.uid,
+      'customer': instance.customer,
+      'fid': instance.fid,
+    };
+
 UserProfile _$UserProfileFromJson(Map<String, dynamic> json) => UserProfile(
       uid: json['uid'] as String? ?? '',
       firstName: json['firstName'] as String? ?? '',

@@ -6,6 +6,26 @@ part 'models.g.dart';
 //todo add class UserProfile
 
 @JsonSerializable()
+class CalendarDateObject {
+  bool fullDay;
+  String startTimeStamp;
+  String endTimeStamp;
+  String uid;
+  String customer;
+  String fid;
+
+  CalendarDateObject(
+      {this.fullDay = false,
+      this.startTimeStamp = "",
+      this.endTimeStamp = "",
+      this.uid = "",
+      this.customer = "",
+      this.fid = ""});
+  factory CalendarDateObject.fromJson(Map<String, dynamic> json) => _$CalendarDateObjectFromJson(json);
+  Map<String, dynamic> toJson() => _$CalendarDateObjectToJson(this);
+}
+
+@JsonSerializable()
 class UserProfile {
   String uid;
   String firstName;
