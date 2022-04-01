@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:plmbr/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:plmbr/services/services.dart';
@@ -27,7 +28,7 @@ class _AddProjectState extends State<AddProject> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Register Project"),
+        title: Text(tr("register-project")),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
@@ -42,7 +43,7 @@ class _AddProjectState extends State<AddProject> {
                   focusNode: _labelFocusNode,
                   controller: _labelController,
                   keyboardType: TextInputType.name,
-                  decoration: const InputDecoration(labelText: "Label", hintText: "Label the project"),
+                  decoration: InputDecoration(labelText: tr("label"), hintText: tr("label-the-project")),
                   textInputAction: TextInputAction.next,
                   onFieldSubmitted: (String value) {
                     _nextFocus(_causeFocusNode);
@@ -52,7 +53,7 @@ class _AddProjectState extends State<AddProject> {
                     focusNode: _causeFocusNode,
                     controller: _causeController,
                     keyboardType: TextInputType.name,
-                    decoration: const InputDecoration(labelText: "Cause", hintText: "Cause of the project"),
+                    decoration: InputDecoration(labelText: tr("cause"), hintText: tr("cause-of-the-project")),
                     textInputAction: TextInputAction.done,
                     onFieldSubmitted: (String value) => _submitForm()),
                 TableCalendar(focusedDay: DateTime.now(), firstDay: DateTime(2019, 1, 1), lastDay: DateTime(2023, 1, 1))
@@ -80,7 +81,7 @@ class _AddProjectState extends State<AddProject> {
 
       FirestoreService().addProject(p);
 
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Registration sent')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(tr("registration-sent"))));
       Navigator.pop(context);
     }
   }

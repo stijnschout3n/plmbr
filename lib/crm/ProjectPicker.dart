@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plmbr/services/services.dart';
@@ -28,7 +29,7 @@ class _ProjectPickerState extends State<ProjectPicker> {
             var projects = snapshot.data!;
             return Scaffold(
               appBar: AppBar(
-                title: const Text("Select project"),
+                title: Text(tr("select-project")),
               ),
               body: ListView.builder(
                   itemCount: projects.length,
@@ -99,7 +100,7 @@ class _ProjectPickerState extends State<ProjectPicker> {
                   }),
             );
           } else {
-            return const Text('No projects found');
+            return Text(tr("no-projects-found"));
           }
         });
   }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:plmbr/archive/crm_archived.dart';
 import 'package:plmbr/crm/AddProject.dart';
 import 'package:plmbr/crm/ProjectPicker.dart';
@@ -52,7 +53,7 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
         FirestoreService().editCustomer(c);
 
         // If the form passes validation, display a Snackbar.
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Registration sent')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(tr("registration-sent"))));
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
@@ -65,13 +66,13 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Client"),
+          title: Text(tr("customer")),
           actions: <Widget>[
             Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: Row(
                 children: [
-                  Text("Edit mode"),
+                  Text(tr("edit-mode")),
                   Switch(
                     value: switchstatus,
                     onChanged: (value) {
@@ -84,7 +85,7 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                       onPressed: () {
                         showDialog(context: context, builder: (context) => _deletePopupDialog(context));
                       },
-                      child: Row(children: const <Widget>[Text('Delete'), Icon(Icons.delete)]))
+                      child: Row(children: <Widget>[Text(tr("delete")), Icon(Icons.delete)]))
                 ],
               ),
             )
@@ -101,14 +102,14 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                       onPressed: () => Navigator.push(
                           context, MaterialPageRoute(builder: (context) => AddProject(customer: widget.customer))),
                       icon: Icon(FontAwesomeIcons.houseDamage),
-                      label: Text("Register"),
+                      label: Text(tr("register")),
                       style: ElevatedButton.styleFrom(fixedSize: (const Size(120, 50))),
                     ),
                     ElevatedButton.icon(
                       onPressed: () => Navigator.push(
                           context, MaterialPageRoute(builder: (context) => ProjectPicker(customer: widget.customer))),
                       icon: Icon(FontAwesomeIcons.houseDamage),
-                      label: Text("View"),
+                      label: Text(tr("view")),
                       style: ElevatedButton.styleFrom(fixedSize: (const Size(120, 50))),
                     ),
                   ]),
@@ -122,7 +123,7 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                           readOnly: !switchstatus,
                           keyboardType: TextInputType.multiline,
                           controller: _notesController,
-                          decoration: InputDecoration(labelText: "Enter notes"),
+                          decoration: InputDecoration(labelText: tr("enter-notes")),
                           maxLines: 10,
                         ),
 
@@ -131,10 +132,10 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                           readOnly: !switchstatus,
                           keyboardType: TextInputType.name,
                           controller: _firstnameController,
-                          decoration: InputDecoration(labelText: "First name"),
+                          decoration: InputDecoration(labelText: tr("first-name")),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please fill in a first name';
+                              return tr("please-fill-in-first-name");
                             }
                             return null;
                           },
@@ -144,10 +145,10 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                           readOnly: !switchstatus,
                           keyboardType: TextInputType.name,
                           controller: _lastnameController,
-                          decoration: InputDecoration(labelText: "Last name"),
+                          decoration: InputDecoration(labelText: tr("last-name")),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please fill in a last name';
+                              return tr("please-fill-in-last-name");
                             }
                             return null;
                           },
@@ -164,17 +165,17 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                                   .hasMatch(value.toString())) {
                                 return null;
                               }
-                              return 'Please fill in a valid email';
+                              return tr("please-fill-in-email");
                             }),
                         //phone
                         TextFormField(
                           readOnly: !switchstatus,
                           keyboardType: TextInputType.phone,
                           controller: _phoneController,
-                          decoration: InputDecoration(labelText: "Phone"),
+                          decoration: InputDecoration(labelText: tr("phone")),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please fill in a phone number';
+                              return tr("please-fill-in-phone");
                             }
                             return null;
                           },
@@ -184,10 +185,10 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                           readOnly: !switchstatus,
                           keyboardType: TextInputType.text,
                           controller: _streetController,
-                          decoration: InputDecoration(labelText: "Street"),
+                          decoration: InputDecoration(labelText: tr("street")),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please fill in a street name';
+                              return tr("please-fill-in-street");
                             }
                             return null;
                           },
@@ -197,10 +198,10 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                           readOnly: !switchstatus,
                           keyboardType: TextInputType.streetAddress,
                           controller: _housenumberController,
-                          decoration: InputDecoration(labelText: "Housenumber"),
+                          decoration: InputDecoration(labelText: tr("house-number")),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please fill in a housenumber';
+                              return tr("please-fill-in-housenumber");
                             }
                             return null;
                           },
@@ -210,10 +211,10 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                           readOnly: !switchstatus,
                           keyboardType: TextInputType.streetAddress,
                           controller: _zipcodeController,
-                          decoration: InputDecoration(labelText: "Zipcode"),
+                          decoration: InputDecoration(labelText: tr("zipcode")),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please fill in a zipcode';
+                              return tr("please-fill-in-zipcde");
                             }
                             return null;
                           },
@@ -223,10 +224,10 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                           readOnly: !switchstatus,
                           keyboardType: TextInputType.streetAddress,
                           controller: _townController,
-                          decoration: InputDecoration(labelText: "Town or city"),
+                          decoration: InputDecoration(labelText: tr("town")),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'Please fill in a town or city';
+                              return tr("please-fill-in-town");
                             }
                             return null;
                           },
@@ -257,12 +258,12 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
 
   Widget _deletePopupDialog(BuildContext context) {
     return AlertDialog(
-      title: const Text('Warning'),
+      title: Text(tr("warning")),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text("Are you sure you want to delete ${widget.customer.firstname}?"),
+          Text(tr("are-you-sure-you-want-to-delete") + "${widget.customer.firstname}?"),
         ],
       ),
       actions: <Widget>[
@@ -272,10 +273,10 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('No'),
+              child: Text(tr("no")),
             ),
             Spacer(),
-            ElevatedButton(onPressed: _deleteCustomer, child: const Text('Yes')),
+            ElevatedButton(onPressed: _deleteCustomer, child: Text(tr("yes"))),
           ],
         ),
       ],

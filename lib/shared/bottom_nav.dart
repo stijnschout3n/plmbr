@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plmbr/services/firestore.dart';
@@ -8,7 +9,7 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      items: const [
+      items: [
         BottomNavigationBarItem(
           icon: Icon(
             FontAwesomeIcons.home,
@@ -28,7 +29,7 @@ class BottomNavBar extends StatelessWidget {
             FontAwesomeIcons.userCircle,
             size: 20,
           ),
-          label: 'Profile',
+          label: tr("profile"),
         ),
       ],
       fixedColor: Colors.deepOrange[200],

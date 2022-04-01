@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plmbr/shared/shared.dart';
 
 class AppsScreen extends StatelessWidget {
@@ -25,13 +26,7 @@ class AppsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Flexible(
-                          child: SizedBox(
-                        child: Image.asset(
-                          "assets/crm.png",
-                          fit: BoxFit.contain,
-                        ),
-                      )),
+                      Flexible(child: SizedBox(child: Icon(FontAwesomeIcons.personBooth))),
                       Flexible(
                           child: Padding(
                         padding: EdgeInsets.only(left: 20, right: 20),

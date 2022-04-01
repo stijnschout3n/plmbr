@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:plmbr/login/login.dart';
@@ -13,10 +14,10 @@ class HomeScreen extends StatelessWidget {
       stream: AuthService().userStream,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Text("Loading");
+          return Text(tr("loading"));
         } else if (snapshot.hasError) {
-          return const Center(
-            child: Text("Error"),
+          return Center(
+            child: Text(tr("error")),
           );
         } else if (snapshot.hasData) {
           return const LandingScreen();

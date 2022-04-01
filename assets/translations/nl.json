@@ -32,5 +32,27 @@
     "town": "Woonplaats",
 
     "register": "Registeren",
-    "registration-sent": "Registratie verzonden"
+    "registration-sent": "Registratie verzonden",
+    "register-project": "Registreer project",
+    "label": "Label",
+    "label-the-project": "Label het project",
+    "cause": "Oorzaak",
+    "cause-of-the-project": "Oorzaak van het project",
+    "select-project": "Selecteer project",
+    "no-projects-found": "Geen projecten gevonden",
+    "customer": "Klant",
+    "edit-mode": "Aanpassen",
+    "delete": "Verwijderen",
+    "view": "Weergeven",
+    "enter-notes": "Voeg notities toe",
+    "warning": "Waarschuwing",
+    "are-you-sure-you-want-to-delete": "Wil je het volgende verwijderen: ",
+    "no": "Nee",
+    "yes": "Ja",
+
+    "loading": "Laden",
+    "error": "Foutmelding",
+    "profile": "Profiel",
+    "sign-out": "Log uit",
+    "choose-language": "Kies taal"
 }

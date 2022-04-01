@@ -32,5 +32,27 @@
     "town": "City or Town",
 
     "register": "Register",
-    "registration-sent": "Registration sent"
+    "registration-sent": "Registration sent",
+    "register-project": "Register project",
+    "label": "Label",
+    "label-the-project": "Label the project",
+    "cause": "Cause",
+    "cause-of-the-project": "Cause of the project",
+    "select-project": "Select project",
+    "no-projects-found": "No projects founds",
+    "customer": "Customer",
+    "edit-mode": "Edit mode",
+    "delete": "Delete",
+    "view": "View",
+    "enter-notes": "Enter notes",
+    "warning": "Warning",
+    "are-you-sure-you-want-to-delete": "Are you sure you want to delete: ",
+    "no": "No",
+    "yes": "Yes",
+    
+    "loading": "Loading",
+    "error": "Error",
+    "profile": "Profile",
+    "sign-out": "Log out",
+    "choose-language": "Choose language"
 }
