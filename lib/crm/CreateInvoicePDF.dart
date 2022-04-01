@@ -10,25 +10,22 @@ import 'package:printing/printing.dart';
 
 //todo make example factuur
 
-class ViewProject extends StatefulWidget {
-  ViewProject({Key? key, required this.project, required this.customer}) : super(key: key);
+class CreateInvoicePDF extends StatefulWidget {
+  CreateInvoicePDF({Key? key, required this.project, required this.customer}) : super(key: key);
 
   final Project project;
   final Customer customer;
   User? user = AuthService().user;
 
   @override
-  State<ViewProject> createState() => _ViewProjectState();
+  State<CreateInvoicePDF> createState() => _CreateInvoicePDFState();
 }
 
-class _ViewProjectState extends State<ViewProject> {
+class _CreateInvoicePDFState extends State<CreateInvoicePDF> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("title")),
-      body: PdfPreview(
-        build: (format) => _generatePdf(format, widget.project.label),
-      ),
+    return PdfPreview(
+      build: (format) => _generatePdf(format, widget.project.label),
     );
   }
 
