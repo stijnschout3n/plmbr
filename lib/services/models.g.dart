@@ -11,6 +11,7 @@ CalendarDateObject _$CalendarDateObjectFromJson(Map<String, dynamic> json) =>
       fullDay: json['fullDay'] as bool? ?? false,
       startTimeStamp: json['startTimeStamp'] as String? ?? "",
       endTimeStamp: json['endTimeStamp'] as String? ?? "",
+      project: json['project'] as String? ?? "",
       uid: json['uid'] as String? ?? "",
       customer: json['customer'] as String? ?? "",
       fid: json['fid'] as String? ?? "",
@@ -22,6 +23,7 @@ Map<String, dynamic> _$CalendarDateObjectToJson(CalendarDateObject instance) =>
       'startTimeStamp': instance.startTimeStamp,
       'endTimeStamp': instance.endTimeStamp,
       'uid': instance.uid,
+      'project': instance.project,
       'customer': instance.customer,
       'fid': instance.fid,
     };

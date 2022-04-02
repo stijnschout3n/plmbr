@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:plmbr/services/auth.dart';
 import 'package:plmbr/services/models.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class FirestoreService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -58,5 +60,14 @@ class FirestoreService {
         return Stream.fromIterable([Project()]);
       }
     });
+  }
+
+  /// Fetches appointments of input day
+  Future<List<CalendarDateObject>> getAppointmentsRelatedToDay(DateTime date) async {
+    var ref = _db.collection('dates').where('uid', isEqualTo: AuthService().user!.uid.toString());
+    var snapshot = await ref.get();
+    var data = snapshot.docs.map((s) => s.data());
+    var appointments = data.map((d) => CalendarDateObject.fromJson(d));
+    return appointments.where((element) => isSameDay(DateTime.parse(element.startTimeStamp), date)).toList();
   }
 }

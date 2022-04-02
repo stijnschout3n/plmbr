@@ -8,16 +8,20 @@ part 'models.g.dart';
 @JsonSerializable()
 class CalendarDateObject {
   bool fullDay;
+  String label;
   String startTimeStamp;
   String endTimeStamp;
   String uid;
+  String project;
   String customer;
   String fid;
 
   CalendarDateObject(
       {this.fullDay = false,
+      this.label = "",
       this.startTimeStamp = "",
       this.endTimeStamp = "",
+      this.project = "",
       this.uid = "",
       this.customer = "",
       this.fid = ""});
