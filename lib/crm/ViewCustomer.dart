@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:plmbr/archive/crm_archived.dart';
-import 'package:plmbr/crm/AddProject.dart';
+import 'package:plmbr/crm/AddProject2.dart';
 import 'package:plmbr/crm/ProjectPicker.dart';
 import 'package:plmbr/crm/CreateInvoicePDF.dart';
 import 'package:plmbr/crm/crm.dart';
@@ -100,7 +100,12 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                   Row(children: [
                     ElevatedButton.icon(
                       onPressed: () => Navigator.push(
-                          context, MaterialPageRoute(builder: (context) => AddProject(customer: widget.customer))),
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddProject2(
+                                    customer: widget.customer,
+                                    appointmentsofToday: FirestoreService().getAppointmentsRelatedToUserToday(),
+                                  ))),
                       icon: Icon(FontAwesomeIcons.houseDamage),
                       label: Text(tr("register")),
                       style: ElevatedButton.styleFrom(fixedSize: (const Size(120, 50))),

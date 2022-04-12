@@ -62,12 +62,23 @@ class FirestoreService {
     });
   }
 
-  /// Fetches appointments of input day
-  Future<List<CalendarDateObject>> getAppointmentsRelatedToDay(DateTime date) async {
+  /// Fetches appointments of related user
+  Future<List<CalendarDateObject>> getAppointmentsRelatedToUser() async {
     var ref = _db.collection('dates').where('uid', isEqualTo: AuthService().user!.uid.toString());
     var snapshot = await ref.get();
     var data = snapshot.docs.map((s) => s.data());
     var appointments = data.map((d) => CalendarDateObject.fromJson(d));
-    return appointments.where((element) => isSameDay(DateTime.parse(element.startTimeStamp), date)).toList();
+    return appointments.toList();
+  }
+
+  /// Fetches appointments of related user on current day -- change the ref query to retrieve less records
+  Future<List<CalendarDateObject>> getAppointmentsRelatedToUserToday() async {
+    var ref = _db.collection('dates').where('uid', isEqualTo: AuthService().user!.uid.toString());
+    var snapshot = await ref.get();
+    var data = snapshot.docs.map((s) => s.data());
+    var appointments = data.map((d) => CalendarDateObject.fromJson(d));
+    return appointments
+        .where((element) => isSameDay(DateTime.tryParse(element.startTimeStamp), DateTime.now()))
+        .toList();
   }
 }
