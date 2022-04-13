@@ -6,9 +6,9 @@ import 'package:plmbr/shared/shared.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class AddProject2 extends StatefulWidget {
-  AddProject2({Key? key, required this.customer, required this.appointmentsofToday}) : super(key: key);
+  AddProject2({Key? key, required this.customer}) : super(key: key);
   final Customer customer;
-  final List<CalendarDateObject> appointmentsofToday;
+  final List<CalendarDateObject> appointmentsofToday = [CalendarDateObject()];
 
   @override
   State<AddProject2> createState() => _AddProject2State();
@@ -35,23 +35,11 @@ class _AddProject2State extends State<AddProject2> {
     _selectedEvents = ValueNotifier(widget.appointmentsofToday);
   }
 
-  List<CalendarDateObject> _getAppointmentsOfDay(DateTime day, List<CalendarDateObject> appointments) {
-    List<CalendarDateObject> appointmentsOfDay = [];
-    for (CalendarDateObject appointment in appointments) {
-      var parsedDate = DateTime.tryParse(appointment.startTimeStamp);
-      if (parsedDate != null) {
-        if (isSameDay(day, parsedDate)) {
-          appointmentsOfDay.add(appointment);
-        }
-      }
-    }
-    return appointmentsOfDay;
-  }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<CalendarDateObject>>(
-      future: FirestoreService().getAppointmentsRelatedToUser(),
+      //idee -> bouw een knopje die alleen de kalender heeft en dus wel async kan
+      future: FirestoreService().getAppointmentsRelatedToUserOnDay(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadingScreen();
@@ -59,7 +47,6 @@ class _AddProject2State extends State<AddProject2> {
           return Center(child: ErrorMessage(message: snapshot.error.toString()));
         } else if (snapshot.hasData) {
           var appointments = snapshot.data;
-
           return Scaffold(
             appBar: AppBar(
               title: Text(tr("register-project")),
@@ -167,5 +154,18 @@ class _AddProject2State extends State<AddProject2> {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(tr("registration-sent"))));
       Navigator.pop(context);
     }
+  }
+
+  List<CalendarDateObject> _getAppointmentsOfDay(DateTime day, List<CalendarDateObject> appointments) {
+    List<CalendarDateObject> appointmentsOfDay = [];
+    for (CalendarDateObject appointment in appointments) {
+      var parsedDate = DateTime.tryParse(appointment.startTimeStamp);
+      if (parsedDate != null) {
+        if (isSameDay(day, parsedDate)) {
+          appointmentsOfDay.add(appointment);
+        }
+      }
+    }
+    return appointmentsOfDay;
   }
 }

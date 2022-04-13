@@ -104,7 +104,6 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                           MaterialPageRoute(
                               builder: (context) => AddProject2(
                                     customer: widget.customer,
-                                    appointmentsofToday: FirestoreService().getAppointmentsRelatedToUserToday(),
                                   ))),
                       icon: Icon(FontAwesomeIcons.houseDamage),
                       label: Text(tr("register")),
