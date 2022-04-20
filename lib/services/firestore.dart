@@ -63,7 +63,7 @@ class FirestoreService {
   }
 
   /// Fetches appointments of related user
-  Future<List<CalendarDateObject>> getAppointmentsRelatedToUserOnDay(DateTime day) async {
+  Future<List<CalendarDateObject>> getAppointmentsRelatedToUser() async {
     var ref = _db.collection('dates').where('uid', isEqualTo: AuthService().user!.uid.toString());
     var snapshot = await ref.get();
     var data = snapshot.docs.map((s) => s.data());

@@ -16,7 +16,7 @@ class _futurebuilderState extends State<futurebuilder> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<CalendarDateObject>>(
-      future: FirestoreService().getAppointmentsRelatedToUserOnDay(DateTime.now()),
+      future: FirestoreService().getAppointmentsRelatedToUser(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadingScreen();
