@@ -35,9 +35,11 @@
     "registration-sent": "Registratie verzonden",
     "register-project": "Registreer project",
     "label": "Label",
+    "please-fill-in-label": "Please s.v.p. een label in",
     "label-the-project": "Label het project",
     "cause": "Oorzaak",
     "cause-of-the-project": "Oorzaak van het project",
+    "please-fill-in-cause": "Vul s.v.p. de oorzaak van het project in",
     "select-project": "Selecteer project",
     "no-projects-found": "Geen projecten gevonden",
     "customer": "Klant",
@@ -54,5 +56,20 @@
     "error": "Foutmelding",
     "profile": "Profiel",
     "sign-out": "Log uit",
-    "choose-language": "Kies taal"
+    "choose-language": "Kies taal",
+    "loading-appointments": "Ophalen van afspraken, een moment geduld",
+    "please-fill-in-form": "Vul s.v.p. het volledige formulier in",
+    "appointments-on-day": "Afspraken op dag",
+
+    "full-day": "Volledige dag",
+    "part-day": "Dagdeel",
+    "full-day-subtitle": "Afspraak gedurende de gehele dag",
+    "part-day-subtitle": "Appointment gedurende een dagdeel",
+    "morning": "Ochtend",
+    "midday": "Middag",
+    "afternoon": "Namiddag",
+    "morning-subtitle": "Afspraak gedurende de ochtenduren",
+    "midday-subtitle": "Afspraak gedurende de middaguren",
+    "afternoon-subtitle": "Afspraak gedurende de namiddaguren"
+
 }

@@ -8,9 +8,10 @@ part of 'models.dart';
 
 CalendarDateObject _$CalendarDateObjectFromJson(Map<String, dynamic> json) =>
     CalendarDateObject(
-      fullDay: json['fullDay'] as bool? ?? false,
+      type: json['type'] as String? ?? "",
+      partType: json['partType'] as String? ?? "",
+      label: json['label'] as String? ?? "",
       startTimeStamp: json['startTimeStamp'] as String? ?? "",
-      endTimeStamp: json['endTimeStamp'] as String? ?? "",
       project: json['project'] as String? ?? "",
       uid: json['uid'] as String? ?? "",
       customer: json['customer'] as String? ?? "",
@@ -19,9 +20,10 @@ CalendarDateObject _$CalendarDateObjectFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$CalendarDateObjectToJson(CalendarDateObject instance) =>
     <String, dynamic>{
-      'fullDay': instance.fullDay,
+      'type': instance.type,
+      'partType': instance.partType,
+      'label': instance.label,
       'startTimeStamp': instance.startTimeStamp,
-      'endTimeStamp': instance.endTimeStamp,
       'uid': instance.uid,
       'project': instance.project,
       'customer': instance.customer,

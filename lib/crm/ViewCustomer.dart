@@ -22,6 +22,7 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
   bool switchstatus = false;
   final _formKey = GlobalKey<FormState>();
   List<CalendarDateObject> _appointments = [];
+  Project _project = Project();
 
   @override
   Widget build(BuildContext context) {
@@ -100,14 +101,17 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                 children: [
                   Row(children: [
                     ElevatedButton.icon(
-                      onPressed: () => [
-                        _retrieveAppointments(),
-                        Navigator.push(
+                      onPressed: () async => [
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(tr("loading-appointments")))),
+                        await _retrieveAppointments(),
+                        await _addProject(),
+                        await Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => AddProject2(
                                       customer: widget.customer,
                                       appointments: _appointments,
+                                      project: _project,
                                     )))
                       ],
                       icon: Icon(FontAwesomeIcons.houseDamage),
@@ -303,8 +307,13 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
     );
   }
 
-  void _retrieveAppointments() async {
+  _retrieveAppointments() async {
     List<CalendarDateObject> appointments = await FirestoreService().getAppointmentsRelatedToUser();
     _appointments = appointments;
+  }
+
+  _addProject() async {
+    Project project = await FirestoreService().addProject();
+    _project = project;
   }
 }

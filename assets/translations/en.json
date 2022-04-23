@@ -36,8 +36,10 @@
     "register-project": "Register project",
     "label": "Label",
     "label-the-project": "Label the project",
+    "please-fill-in-label": "Please fill in the label of the project",
     "cause": "Cause",
     "cause-of-the-project": "Cause of the project",
+    "please-fill-in-cause": "Please fill in the cause of the project",
     "select-project": "Select project",
     "no-projects-found": "No projects founds",
     "customer": "Customer",
@@ -54,5 +56,19 @@
     "error": "Error",
     "profile": "Profile",
     "sign-out": "Log out",
-    "choose-language": "Choose language"
+    "choose-language": "Choose language",
+    "loading-appointments": "Retrieving appointments, please wait",
+    "please-fill-in-form": "Please fill in complete form",
+    "appointments-on-day": "Appointments on day",
+
+    "full-day": "Full day",
+    "part-day": "Part of day",
+    "full-day-subtitle": "Appointment that spans the whole day",
+    "part-day-subtitle": "Appointment that spans a part of the day",
+    "morning": "Morning",
+    "midday": "Midday",
+    "afternoon": "Afternoon",
+    "morning-subtitle": "Appointment in the morning hours",
+    "midday-subtitle": "Appoint in the middle of the day",
+    "afternoon-subtitle": "Appoint in the afternoon"
 }

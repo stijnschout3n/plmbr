@@ -34,11 +34,17 @@ class FirestoreService {
     }
   }
 
-  /// Add a new project to the firestore database
-  Future<void> addProject(Project project) async {
+  /// Save a project to the firestore database
+  Future<void> saveProject(Project project) async {
+    _db.collection('projects').doc(project.fid).set(project.toJson());
+  }
+
+  /// Adds and returns a new project
+  Future<Project> addProject() async {
+    Project project = Project();
     DocumentReference doc = _db.collection('projects').doc();
     project.fid = doc.id;
-    doc.set(project.toJson());
+    return project;
   }
 
   /// Reads all documents from the customers collection
@@ -62,12 +68,22 @@ class FirestoreService {
     });
   }
 
-  /// Fetches appointments of related user
+  /// Fetches appointments of current user
   Future<List<CalendarDateObject>> getAppointmentsRelatedToUser() async {
     var ref = _db.collection('dates').where('uid', isEqualTo: AuthService().user!.uid.toString());
     var snapshot = await ref.get();
     var data = snapshot.docs.map((s) => s.data());
     var appointments = data.map((d) => CalendarDateObject.fromJson(d));
     return appointments.toList();
+  }
+
+  Future<void> saveAppointments(List<CalendarDateObject> appointments) async {
+    var user = AuthService().user!.uid.toString();
+    for (var i = 0; i < appointments.length; i++) {
+      DocumentReference doc = _db.collection('dates').doc();
+      appointments[i].fid = doc.id;
+      appointments[i].uid = user;
+      doc.set(appointments[i].toJson());
+    }
   }
 }
