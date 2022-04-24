@@ -16,9 +16,6 @@ class AddProject2 extends StatefulWidget {
   State<AddProject2> createState() => _AddProject2State();
 }
 
-enum AppointmentType { part, full }
-enum PartType { morning, midday, afternoon }
-
 class _AddProject2State extends State<AddProject2> {
   final _formKey = GlobalKey<FormState>();
 
@@ -141,7 +138,7 @@ class _AddProject2State extends State<AddProject2> {
                       itemCount: value.length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text(value[index].fid),
+                          title: Text(value[index].label),
                           textColor: Colors.white,
                         );
                       },
@@ -154,6 +151,8 @@ class _AddProject2State extends State<AddProject2> {
                 child: Text(_selectedDays.length.toString()),
               ),
               TextFormField(
+                  decoration:
+                      InputDecoration(labelText: tr("label-the-appointment"), hintText: tr("label-the-appointment")),
                   controller: _dateLabelController,
                   focusNode: _dateLabelFocusNode,
                   keyboardType: TextInputType.name,
@@ -314,4 +313,15 @@ class _AddProject2State extends State<AddProject2> {
     _selectedAppointments = [];
     setState(() {});
   }
+}
+
+class AppointmentListTile {
+  late CalendarDateObject appointment;
+  String customerInfo;
+  String projectInfo;
+
+  AppointmentListTile({
+    this.customerInfo = "",
+    this.projectInfo = "",
+  });
 }

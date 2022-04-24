@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'services.dart';
 
+enum AppointmentType { part, full }
+enum PartType { morning, midday, afternoon }
+
 class Helpers {
   getColorBasedOnStatus(dynamic object) {
     Color c = Colors.black;
