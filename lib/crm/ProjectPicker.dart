@@ -52,14 +52,16 @@ class _ProjectPickerState extends State<ProjectPicker> {
                               color: Colors.blue,
                             ),
                             SizedBox(
-                              width: 10,
+                              width: 20,
                             ),
                             SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              projects[index].label,
-                              style: TextStyle(color: Colors.black),
+                              width: 100,
+                              child: Text(
+                                projects[index].label,
+                                style: TextStyle(color: Colors.black),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 5,
+                              ),
                             ),
                             SizedBox(
                               width: 10,
@@ -86,12 +88,51 @@ class _ProjectPickerState extends State<ProjectPicker> {
                                 SizedBox(
                                   width: 120,
                                   child: ElevatedButton.icon(
-                                    onPressed: () => {},
+                                    onPressed: () => {
+                                      showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return SimpleDialog(
+                                              title: Text(projects[index].status),
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsets.all(8.0),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                            width: 5.0,
+                                                            color: Helpers().getColorBasedOnStatusText("Open"))),
+                                                    child: ElevatedButton(
+                                                      onPressed: () => {},
+                                                      child: Text("Open"),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.all(8.0),
+                                                  child:
+                                                      ElevatedButton(onPressed: () => {}, child: Text("In Progress")),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.all(8.0),
+                                                  child: ElevatedButton(onPressed: () => {}, child: Text("Ready")),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.all(8.0),
+                                                  child: ElevatedButton(onPressed: () => {}, child: Text("Closed")),
+                                                ),
+                                              ],
+                                            );
+                                          })
+                                    },
                                     icon: Icon(FontAwesomeIcons.bolt),
                                     label: Text("Status"),
                                   ),
                                 ),
                               ],
+                            ),
+                            SizedBox(
+                              width: 20,
                             ),
                           ],
                         ),

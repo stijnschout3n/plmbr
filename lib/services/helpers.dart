@@ -37,4 +37,32 @@ class Helpers {
     }
     return c;
   }
+
+  getColorBasedOnStatusText(String status) {
+    Color c = Colors.black;
+
+    switch (status) {
+      case "Open":
+        {
+          c = Colors.amber;
+          break;
+        }
+      case "In Progress":
+        {
+          c = Colors.blue;
+          break;
+        }
+      case "Ready":
+        {
+          c = Colors.deepPurple;
+          break;
+        }
+      case "Closed":
+        {
+          c = Colors.green;
+          break;
+        }
+    }
+    return c;
+  }
 }
