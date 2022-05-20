@@ -34,6 +34,15 @@ class FirestoreService {
     }
   }
 
+  /// Edits an existing project in the firestore database
+  Future<void> editProject(Project project, {bool delete = false}) async {
+    if (delete) {
+      _db.collection('projects').doc(project.fid).delete();
+    } else {
+      _db.collection('projects').doc(project.fid).set(project.toJson());
+    }
+  }
+
   /// Save a project to the firestore database
   Future<void> saveProject(Project project) async {
     _db.collection('projects').doc(project.fid).set(project.toJson());

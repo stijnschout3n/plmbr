@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plmbr/services/services.dart';
 import 'package:plmbr/shared/shared.dart';
 
-//todo show list of ongoing projects make a toggle to show finished projects
 class ProjectPicker extends StatefulWidget {
   ProjectPicker({Key? key, required this.customer}) : super(key: key);
 
@@ -27,6 +26,7 @@ class _ProjectPickerState extends State<ProjectPicker> {
             );
           } else if (snapshot.hasData) {
             var projects = snapshot.data!;
+            projects = _restructureProjectList(projects);
             return Scaffold(
               appBar: AppBar(
                 title: Text(tr("select-project")),
@@ -95,31 +95,65 @@ class _ProjectPickerState extends State<ProjectPicker> {
                                             return SimpleDialog(
                                               title: Text(projects[index].status),
                                               children: [
-                                                Padding(
-                                                  padding: const EdgeInsets.all(8.0),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                        border: Border.all(
-                                                            width: 5.0,
-                                                            color: Helpers().getColorBasedOnStatusText("Open"))),
-                                                    child: ElevatedButton(
-                                                      onPressed: () => {},
-                                                      child: Text("Open"),
+                                                Column(
+                                                  children: [
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Icon(Icons.arrow_forward_ios,
+                                                            color: Helpers().getColorBasedOnStatusText("Open")),
+                                                        Padding(
+                                                          padding: const EdgeInsets.all(8.0),
+                                                          child: ElevatedButton(
+                                                            onPressed: () => {_updateProject("Open", projects[index])},
+                                                            child: Text("Open"),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.all(8.0),
-                                                  child:
-                                                      ElevatedButton(onPressed: () => {}, child: Text("In Progress")),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.all(8.0),
-                                                  child: ElevatedButton(onPressed: () => {}, child: Text("Ready")),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.all(8.0),
-                                                  child: ElevatedButton(onPressed: () => {}, child: Text("Closed")),
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Icon(Icons.arrow_forward_ios,
+                                                            color: Helpers().getColorBasedOnStatusText("In Progress")),
+                                                        Padding(
+                                                          padding: const EdgeInsets.all(8.0),
+                                                          child: ElevatedButton(
+                                                              onPressed: () =>
+                                                                  {_updateProject("In Progress", projects[index])},
+                                                              child: Text("In Progress")),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Icon(Icons.arrow_forward_ios,
+                                                            color: Helpers().getColorBasedOnStatusText("Ready")),
+                                                        Padding(
+                                                          padding: const EdgeInsets.all(8.0),
+                                                          child: ElevatedButton(
+                                                              onPressed: () =>
+                                                                  {_updateProject("Ready", projects[index])},
+                                                              child: Text("Ready")),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Icon(Icons.arrow_forward_ios,
+                                                            color: Helpers().getColorBasedOnStatusText("Closed")),
+                                                        Padding(
+                                                          padding: const EdgeInsets.all(8.0),
+                                                          child: ElevatedButton(
+                                                              onPressed: () =>
+                                                                  {_updateProject("Closed", projects[index])},
+                                                              child: Text("Closed")),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             );
@@ -144,5 +178,37 @@ class _ProjectPickerState extends State<ProjectPicker> {
             return Text(tr("no-projects-found"));
           }
         });
+  }
+
+  _updateProject(String status, Project p) async {
+    p.status = status;
+    await FirestoreService().editProject(p);
+    Navigator.pop(context);
+    setState(() {});
+  }
+
+  _restructureProjectList(List<Project> projects) {
+    List<Project> newList = [];
+    for (var i = 0; i < projects.length; i++) {
+      if (projects[i].status == "Open") {
+        newList.add(projects[i]);
+      }
+    }
+    for (var i = 0; i < projects.length; i++) {
+      if (projects[i].status == "In Progress") {
+        newList.add(projects[i]);
+      }
+    }
+    for (var i = 0; i < projects.length; i++) {
+      if (projects[i].status == "Ready") {
+        newList.add(projects[i]);
+      }
+    }
+    for (var i = 0; i < projects.length; i++) {
+      if (projects[i].status == "Closed") {
+        newList.add(projects[i]);
+      }
+    }
+    return newList;
   }
 }

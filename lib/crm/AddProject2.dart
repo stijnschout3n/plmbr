@@ -255,6 +255,7 @@ class _AddProject2State extends State<AddProject2> {
       p.timeCreated = dateTime.toString();
       p.label = _labelController.text;
       p.cause = _causeController.text;
+      p.status = "Open";
 
       FirestoreService().saveProject(p);
       FirestoreService().saveAppointments(_selectedAppointments);
