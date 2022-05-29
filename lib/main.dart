@@ -48,7 +48,7 @@ class _AppState extends State<App> {
         if (snapshot.connectionState == ConnectionState.done) {
           return MaterialApp(
             routes: appRoutes,
-            theme: appTheme,
+            theme: myTheme,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
