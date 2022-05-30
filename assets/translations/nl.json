@@ -71,6 +71,11 @@
     "afternoon": "Namiddag",
     "morning-subtitle": "Afspraak gedurende de ochtenduren",
     "midday-subtitle": "Afspraak gedurende de middaguren",
-    "afternoon-subtitle": "Afspraak gedurende de namiddaguren"
+    "afternoon-subtitle": "Afspraak gedurende de namiddaguren",
+    "hours": "Uren",
+    "open": "Open",
+    "in-progress": "In behandeling",
+    "ready": "Klaar",
+    "closed": "Gesloten"
 
 }

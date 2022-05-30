@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,6 +15,8 @@ class ProjectPicker extends StatefulWidget {
 }
 
 class _ProjectPickerState extends State<ProjectPicker> {
+  double hrs = 0.0;
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Project>>(
@@ -43,6 +47,7 @@ class _ProjectPickerState extends State<ProjectPicker> {
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(width: 5.0, color: Helpers().getColorBasedOnStatus(projects[index]))),
                         child: Row(
+                          // start of listview
                           children: [
                             SizedBox(
                               width: 10,
@@ -54,6 +59,7 @@ class _ProjectPickerState extends State<ProjectPicker> {
                             SizedBox(
                               width: 20,
                             ),
+                            //label of the project
                             SizedBox(
                               width: 100,
                               child: Text(
@@ -71,29 +77,98 @@ class _ProjectPickerState extends State<ProjectPicker> {
                               children: [
                                 SizedBox(
                                   width: 120,
+                                  //hours button
                                   child: ElevatedButton.icon(
                                     onPressed: () => {
                                       showDialog(
                                           context: context,
                                           builder: (context) {
-                                            return SimpleDialog(
-                                              title: Text("hi"),
+                                            hrs = projects[index].hours;
+                                            return StatefulBuilder(
+                                              builder: (BuildContext context, setState) {
+                                                return SimpleDialog(
+                                                  title: Row(
+                                                    children: [
+                                                      Text(tr("hours") + ": $hrs"),
+                                                      IconButton(
+                                                        onPressed: () => {Navigator.pop(context)},
+                                                        icon: Icon(Icons.close),
+                                                        color: Colors.red,
+                                                      )
+                                                    ],
+                                                  ),
+                                                  children: [
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                      children: [
+                                                        ElevatedButton(
+                                                            onPressed: () => {
+                                                                  setState(() {
+                                                                    hrs += 1;
+                                                                    projects[index].hours += 1;
+                                                                    _updateProjectHours(projects[index]);
+                                                                  })
+                                                                },
+                                                            child: Text("+1")),
+                                                        ElevatedButton(
+                                                            onPressed: () => {
+                                                                  setState(() {
+                                                                    hrs -= 1;
+                                                                    projects[index].hours -= 1;
+                                                                    _updateProjectHours(projects[index]);
+                                                                  })
+                                                                },
+                                                            child: Text("-1")),
+                                                        ElevatedButton(
+                                                            onPressed: () => {
+                                                                  setState(() {
+                                                                    hrs += 0.5;
+                                                                    projects[index].hours += 0.5;
+                                                                    _updateProjectHours(projects[index]);
+                                                                  })
+                                                                },
+                                                            child: Text("+0.5")),
+                                                        ElevatedButton(
+                                                            onPressed: () => {
+                                                                  setState(() {
+                                                                    hrs -= 0.5;
+                                                                    projects[index].hours -= 0.5;
+                                                                    _updateProjectHours(projects[index]);
+                                                                  })
+                                                                },
+                                                            child: Text("-0.5")),
+                                                      ],
+                                                    )
+                                                  ],
+                                                );
+                                              },
                                             );
                                           })
                                     },
                                     icon: Icon(FontAwesomeIcons.adjust),
-                                    label: Text("Uren"),
+                                    label: Text(tr("hours")),
                                   ),
                                 ),
                                 SizedBox(
                                   width: 120,
+                                  //status button
                                   child: ElevatedButton.icon(
                                     onPressed: () => {
                                       showDialog(
                                           context: context,
                                           builder: (context) {
                                             return SimpleDialog(
-                                              title: Text(projects[index].status),
+                                              //status dialog
+                                              title: Row(
+                                                children: [
+                                                  Text("Status: " + projects[index].status),
+                                                  IconButton(
+                                                    onPressed: () => {Navigator.pop(context)},
+                                                    icon: Icon(Icons.close),
+                                                    color: Colors.red,
+                                                  )
+                                                ],
+                                              ),
                                               children: [
                                                 Column(
                                                   children: [
@@ -106,7 +181,7 @@ class _ProjectPickerState extends State<ProjectPicker> {
                                                           padding: const EdgeInsets.all(8.0),
                                                           child: ElevatedButton(
                                                             onPressed: () => {_updateProject("Open", projects[index])},
-                                                            child: Text("Open"),
+                                                            child: Text(tr("open")),
                                                           ),
                                                         ),
                                                       ],
@@ -121,7 +196,7 @@ class _ProjectPickerState extends State<ProjectPicker> {
                                                           child: ElevatedButton(
                                                               onPressed: () =>
                                                                   {_updateProject("In Progress", projects[index])},
-                                                              child: Text("In Progress")),
+                                                              child: Text(tr("in-progress"))),
                                                         ),
                                                       ],
                                                     ),
@@ -135,7 +210,7 @@ class _ProjectPickerState extends State<ProjectPicker> {
                                                           child: ElevatedButton(
                                                               onPressed: () =>
                                                                   {_updateProject("Ready", projects[index])},
-                                                              child: Text("Ready")),
+                                                              child: Text(tr("ready"))),
                                                         ),
                                                       ],
                                                     ),
@@ -149,7 +224,7 @@ class _ProjectPickerState extends State<ProjectPicker> {
                                                           child: ElevatedButton(
                                                               onPressed: () =>
                                                                   {_updateProject("Closed", projects[index])},
-                                                              child: Text("Closed")),
+                                                              child: Text(tr("closed"))),
                                                         ),
                                                       ],
                                                     ),
@@ -185,6 +260,10 @@ class _ProjectPickerState extends State<ProjectPicker> {
     await FirestoreService().editProject(p);
     Navigator.pop(context);
     setState(() {});
+  }
+
+  _updateProjectHours(Project p) async {
+    await FirestoreService().editProject(p);
   }
 
   _restructureProjectList(List<Project> projects) {

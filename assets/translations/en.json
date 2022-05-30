@@ -3,7 +3,7 @@
     "login-with-google": "Login with Google",
     "login-test-user": "Test user",
 
-    "CRM": "CRM",
+    "CRM": "Customers",
     "add": "Add",
     "search-customer": "Search customer",
     "no-customers-found": "No customers found in customer database",
@@ -71,5 +71,11 @@
     "afternoon": "Afternoon",
     "morning-subtitle": "Appointment in the morning hours",
     "midday-subtitle": "Appoint in the middle of the day",
-    "afternoon-subtitle": "Appoint in the afternoon"
+    "afternoon-subtitle": "Appoint in the afternoon",
+    "hours": "Hours",
+    "open" : "Open",
+    "in-progress" : "In progress",
+    "ready": "Ready",
+    "closed" : "Closed"
+
 }

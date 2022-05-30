@@ -99,7 +99,7 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
               scrollDirection: Axis.vertical,
               child: Column(
                 children: [
-                  Row(children: [
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                     ElevatedButton.icon(
                       onPressed: () async => [
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(tr("loading-appointments")))),
