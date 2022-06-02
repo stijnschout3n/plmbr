@@ -68,7 +68,7 @@ MaterialColor PrimaryMaterialColor = MaterialColor(
 
 ThemeData myTheme = ThemeData(
   fontFamily: "customFont",
-  brightness: Brightness.dark,
+  brightness: Brightness.light,
   primaryColor: Color(0xffffd54f),
   primarySwatch: PrimaryMaterialColor,
   elevatedButtonTheme: ElevatedButtonThemeData(

@@ -2,6 +2,8 @@
     "login-as-guest": "Ga verder als gast",
     "login-with-google": "Login met Google",
     "login-test-user": "Test user",
+    "homepage": "Landingspagina",
+
 
     "CRM": "Klanten",
     "add": "Voeg toe",
@@ -76,6 +78,10 @@
     "open": "Open",
     "in-progress": "In behandeling",
     "ready": "Klaar",
-    "closed": "Gesloten"
+    "closed": "Gesloten",
 
+    "calendar"  : "Kalender",
+    "knowledge-base": "Kennisbank",
+    "administration": "Administratie",
+    "dashboard": "Dashboard"
 }

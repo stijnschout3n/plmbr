@@ -27,7 +27,6 @@ class ProfileScreen extends StatelessWidget {
           LanguagePicker()
         ],
       ),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

@@ -2,6 +2,7 @@
     "login-as-guest": "Continue as Guest",
     "login-with-google": "Login with Google",
     "login-test-user": "Test user",
+    "homepage": "Home page",
 
     "CRM": "Customers",
     "add": "Add",
@@ -76,6 +77,11 @@
     "open" : "Open",
     "in-progress" : "In progress",
     "ready": "Ready",
-    "closed" : "Closed"
+    "closed" : "Closed",
+
+    "calendar"  : "Calendar",
+    "knowledge-base": "Knowledge base",
+    "administration": "Administration",
+    "dashboard": "Dashboard"
 
 }
