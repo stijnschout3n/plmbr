@@ -16,7 +16,6 @@ var appRoutes = {
   '/': (context) => const HomeScreen(),
   '/login': (context) => const LoginScreen(),
   '/about': (context) => const AboutScreen(),
-  '/profile': (context) => const ProfileScreen(),
   '/apps': (context) => const AppsScreen(),
   '/landing': (context) => const LandingScreen(),
   '/crm': (context) => const CrmScreen(),

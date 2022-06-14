@@ -32,23 +32,35 @@ Map<String, dynamic> _$CalendarDateObjectToJson(CalendarDateObject instance) =>
 
 UserProfile _$UserProfileFromJson(Map<String, dynamic> json) => UserProfile(
       uid: json['uid'] as String? ?? '',
-      firstName: json['firstName'] as String? ?? '',
-      lastName: json['lastName'] as String? ?? '',
+      fid: json['fid'] as String? ?? '',
+      firstname: json['firstname'] as String? ?? '',
+      lastname: json['lastname'] as String? ?? '',
       street: json['street'] as String? ?? '',
       housenumber: json['housenumber'] as String? ?? '',
       zipcode: json['zipcode'] as String? ?? '',
       town: json['town'] as String? ?? '',
+      companyName: json['companyName'] as String? ?? '',
+      kvk: json['kvk'] as String? ?? '',
+      btw: json['btw'] as String? ?? '',
+      email: json['email'] as String? ?? '',
+      logoRef: json['logoRef'] as String? ?? '',
     );
 
 Map<String, dynamic> _$UserProfileToJson(UserProfile instance) =>
     <String, dynamic>{
       'uid': instance.uid,
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
+      'fid': instance.fid,
+      'firstname': instance.firstname,
+      'lastname': instance.lastname,
       'street': instance.street,
       'housenumber': instance.housenumber,
       'zipcode': instance.zipcode,
       'town': instance.town,
+      'companyName': instance.companyName,
+      'kvk': instance.kvk,
+      'btw': instance.btw,
+      'email': instance.email,
+      'logoRef': instance.logoRef,
     };
 
 Project _$ProjectFromJson(Map<String, dynamic> json) => Project(

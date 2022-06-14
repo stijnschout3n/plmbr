@@ -9,7 +9,7 @@ import 'package:table_calendar/table_calendar.dart';
 class FirestoreService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  /// Reads all documents from the customers collection
+  /// Reads all customers from the users collection
   Future<List<Customer>> getCustomersRelatedToUser() async {
     var ref = _db.collection('customers').where('uid', isEqualTo: AuthService().user!.uid.toString());
     var snapshot = await ref.get();
@@ -86,6 +86,7 @@ class FirestoreService {
     return appointments.toList();
   }
 
+  /// Saves appointments of current user
   Future<void> saveAppointments(List<CalendarDateObject> appointments) async {
     var user = AuthService().user!.uid.toString();
     for (var i = 0; i < appointments.length; i++) {
@@ -94,5 +95,20 @@ class FirestoreService {
       appointments[i].uid = user;
       doc.set(appointments[i].toJson());
     }
+  }
+
+  Future<List<UserProfile>> getUserProfile() async {
+    var ref = _db.collection('profile').where('uid', isEqualTo: AuthService().user!.uid.toString());
+    var snapshot = await ref.get();
+    var data = snapshot.docs.map((s) => s.data());
+    var userprofile = data.map((d) => UserProfile.fromJson(d));
+    return userprofile.toList();
+  }
+
+  Future<void> saveUserProfile(UserProfile userprofile) async {
+    DocumentReference doc = _db.collection('profile').doc();
+    userprofile.fid = doc.id;
+    userprofile.uid = AuthService().user!.uid.toString();
+    doc.set(userprofile.toJson());
   }
 }

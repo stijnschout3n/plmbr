@@ -1,8 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'models.g.dart';
 
-//todo add class UserProfile
-
 @JsonSerializable()
 class CalendarDateObject {
   String type;
@@ -30,21 +28,33 @@ class CalendarDateObject {
 @JsonSerializable()
 class UserProfile {
   String uid;
-  String firstName;
-  String lastName;
+  String fid;
+  String firstname;
+  String lastname;
   String street;
   String housenumber;
   String zipcode;
   String town;
+  String companyName;
+  String kvk;
+  String btw;
+  String email;
+  String logoRef;
 
   UserProfile(
       {this.uid = '',
-      this.firstName = '',
-      this.lastName = '',
+      this.fid = '',
+      this.firstname = '',
+      this.lastname = '',
       this.street = '',
       this.housenumber = '',
       this.zipcode = '',
-      this.town = ''});
+      this.town = '',
+      this.companyName = '',
+      this.kvk = '',
+      this.btw = '',
+      this.email = '',
+      this.logoRef = ''});
   factory UserProfile.fromJson(Map<String, dynamic> json) => _$UserProfileFromJson(json);
   Map<String, dynamic> toJson() => _$UserProfileToJson(this);
 }

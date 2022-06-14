@@ -116,14 +116,14 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                       ],
                       icon: Icon(FontAwesomeIcons.houseDamage),
                       label: Text(tr("register")),
-                      style: ElevatedButton.styleFrom(fixedSize: (const Size(120, 50))),
+                      style: ElevatedButton.styleFrom(fixedSize: (const Size(140, 50))),
                     ),
                     ElevatedButton.icon(
                       onPressed: () => Navigator.push(
                           context, MaterialPageRoute(builder: (context) => ProjectPicker(customer: widget.customer))),
                       icon: Icon(FontAwesomeIcons.houseDamage),
                       label: Text(tr("view")),
-                      style: ElevatedButton.styleFrom(fixedSize: (const Size(120, 50))),
+                      style: ElevatedButton.styleFrom(fixedSize: (const Size(140, 50))),
                     ),
                   ]),
                   Form(
@@ -227,7 +227,7 @@ class _ViewCustomerScreenState extends State<ViewCustomerScreen> {
                           decoration: InputDecoration(labelText: tr("zipcode")),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return tr("please-fill-in-zipcde");
+                              return tr("please-fill-in-zipcode");
                             }
                             return null;
                           },

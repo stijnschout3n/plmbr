@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:plmbr/profile/profile.dart';
+import 'package:plmbr/services/services.dart';
 import 'package:plmbr/shared/bottom_nav.dart';
 import 'package:flutter/material.dart';
 
@@ -134,7 +136,12 @@ class LandingScreen extends StatelessWidget {
                 child: Card(
                   child: InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, "/profile");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProfileScreen(
+                                    userprofile: _getUserProfile(),
+                                  )));
                     },
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -154,5 +161,14 @@ class LandingScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+_getUserProfile() async {
+  List<UserProfile> userProfile = await _getUserProfile();
+  if (userProfile != null) {
+    return userProfile;
+  } else {
+    return UserProfile();
   }
 }
