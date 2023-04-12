@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:plmbr/services/appstate.dart';
 import 'package:plmbr/services/auth.dart';
 import 'package:plmbr/shared/language_picker.dart';
+import 'package:provider/src/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -36,7 +38,11 @@ class LoginScreen extends StatelessWidget {
                 text: tr("login-test-user"),
                 icon: FontAwesomeIcons.anchor,
                 color: Colors.red,
-                loginMethod: AuthService().emailLogin),
+                loginMethod: () async {
+                  await AuthService().emailLogin;
+                  final appState = context.read<AppState>();
+                  appState.login();
+                }),
           ],
         ),
       ),

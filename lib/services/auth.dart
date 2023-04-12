@@ -17,8 +17,7 @@ class AuthService {
 
   Future<void> emailLogin() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: "test@test.com", password: "pw123456");
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: "test@test.com", password: "pw123456");
     } on FirebaseAuthException catch (e) {
       //handle error
     }

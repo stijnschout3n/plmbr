@@ -1,10 +1,12 @@
 import 'package:plmbr/routes.dart';
+import 'package:plmbr/services/appstate.dart';
 import 'package:plmbr/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 // Import the firebase_core plugin
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,12 +48,15 @@ class _AppState extends State<App> {
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return MaterialApp(
-            routes: appRoutes,
-            theme: myTheme,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
+          return ChangeNotifierProvider(
+            create: (context) => AppState(),
+            child: MaterialApp(
+              routes: appRoutes,
+              theme: myTheme,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+            ),
           );
         }
 
